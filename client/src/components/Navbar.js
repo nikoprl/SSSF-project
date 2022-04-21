@@ -1,7 +1,9 @@
+import { NavLink } from "react-router-dom";
 import { AppBar, Button, Container, Toolbar, Typography } from "@mui/material";
 import { styled, createTheme } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 import { ThemeProvider } from "@emotion/react";
+
 
 const navtheme = createTheme({
   palette: {
@@ -27,10 +29,10 @@ const Navbar = () => {
           <Container>
             <Toolbar>
               <Typography sx={{ flexGrow: 1 }}>LOGO</Typography>
-              <Button color="inherit">Home</Button>
-              <Button color="inherit">Favourites</Button>
-              <Button color="inherit">Create new</Button>
-              <ColorButton variant="contained">Sign in</ColorButton>
+              <Button color="inherit" component={NavLink} to="/">Home</Button>
+              <Button color="inherit" component={NavLink} to="/favourites">Favourites</Button>
+              <Button color="inherit" component={NavLink} to="/create-new">Create new</Button>
+              <ColorButton variant="contained" component={NavLink} to="/login">Sign in</ColorButton>
             </Toolbar>
           </Container>
         </AppBar>
@@ -38,5 +40,6 @@ const Navbar = () => {
     </>
   );
 };
+
 
 export default Navbar;
