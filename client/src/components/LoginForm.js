@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Box,
@@ -129,6 +130,7 @@ const LoginForm = () => {
                   <ColorButton sx={{ mt: 5, mb: 2 }}>Submit</ColorButton>
                 </Grid>
               </form>
+              <p>Don't have account?</p> <Button component={Link} to="/register">Sign up!</Button>
             </Item>
           </Grid>
         </Grid>
