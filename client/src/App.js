@@ -1,4 +1,4 @@
-import { Home, Login, Logout, Favourites, CreateNew } from "./views/all";
+import { Home, Login, Logout, Favourites, CreateNew, Register } from "./views/all";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -24,6 +24,7 @@ const App = () => {
           <Route path="/" exact element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/create-new" element={<CreateNew />} />
           <Route path="/favourites" element={<Favourites />} />
         </Routes>
