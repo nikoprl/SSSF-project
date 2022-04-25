@@ -9,8 +9,6 @@ import {
   Grid,
   IconButton,
   InputAdornment,
-  // InputLabel,
-  // OutlinedInput,
   Paper,
   styled,
   Typography,
@@ -18,7 +16,7 @@ import {
 import { purple } from "@mui/material/colors";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import useForm from "../hooks/FormHooks";
-import registerUser from "../hooks/apihooks";
+import {registerUser} from "../hooks/apihooks";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#1a1a1a",
@@ -36,37 +34,19 @@ const ColorButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-// const StyledOutlinedInput = styled(OutlinedInput)({
-//   backgroundColor: "#33303e",
-// });
-
 const RegisterForm = () => {
   const validators = {
     username: ["required", "minStringLength: 3", "isAvailable"],
     password: ["required", "minStringLength:5"],
     confirmpassw: ["required", "isPasswordMatch"],
-    // email: ["required", "isEmail"],
-    // eslint-disable-next-line max-len
-    // full_name: [
-    //   "matchRegexp:^[a-zA-ZåäöÅÄÖ]+(([',. -][a-zA-ZåäöÅÄÖ ])?[a-zA-ZåäöÅÄÖ]*)*$",
-    // ],
-  };
-  const errorMessages = {
-    username: ["vaadittu kenttä", "Has to be atleast 3 letters", "tunnus ei oo vapaa"],
-    password: ["vaadittu kenttä", "Has to be atleast 5 letters"],
-    confirmpassw: ["vaadittu kenttä", "Passwords do not match"],
-    // email: ["vaadittu kenttä", "sähköposti väärää muotoa"],
-    // full_name: ["vain kirjamia siis hei pliis jooko"],
   };
 
-  /* 
-  const [values, setValues] = React.useState({
-    username: "",
-    password: "",
-    confirmpassw: "",
-    showPassword: false,
-  });
-*/
+  const errorMessages = {
+    username: ["Required field", "Has to be atleast 3 letters",],
+    password: ["Required field", "Has to be atleast 5 letters"],
+    confirmpassw: ["Required field", "Passwords do not match"],
+  };
+
   const registeroiUser = async () => {
     try {
       registerUser(values.username, values.password);
@@ -82,21 +62,7 @@ const RegisterForm = () => {
     showPassword: false,
   });
 
-  const handleChange = (prop) => (event) => {
-    console.log("prop",prop);
-    console.log("event",event);
-    handleInputChange({ ...values, [prop]: event.target.value });
-  };
-
-  // const handleChange2 = (prop) => {
-
-  // }
-
   const handleClickShowPassword = () => {
-    // handleInputChange({
-    //   ...values,
-    //   showPassword: !values.showPassword,
-    // });
     handleInputChangeByName(values,"showPassword", !values.showPassword);
   };
 
@@ -137,19 +103,6 @@ const RegisterForm = () => {
               <ValidatorForm onSubmit={handleSubmit}>
                 <Grid container direction="column">
                   <FormControl sx={{ m: 1, width: "45ch" }} variant="outlined">
-                    {/* <InputLabel
-                      sx={{ color: "white" }}
-                      htmlFor="outlined-adornment-username"
-                    >
-                      Username
-                    </InputLabel> */}
-                    {/* <StyledOutlinedInput
-                      sx={{ color: "white" }}
-                      id="outlined-adornment-username"
-                      value={values.username}
-                      onChange={handleChange("username")}
-                      label="Username"
-                    /> */}
                     <TextValidator
                       sx={{
                         backgroundColor: "#33303e",
@@ -172,37 +125,6 @@ const RegisterForm = () => {
                     />
                   </FormControl>
                   <FormControl sx={{ m: 1, width: "45ch" }} variant="outlined">
-                    {/* <InputLabel
-                      sx={{ color: "white" }}
-                      htmlFor="outlined-adornment-password"
-                    >
-                      Password
-                    </InputLabel> */}
-                    {/* <StyledOutlinedInput
-                      sx={{ color: "white" }}
-                      id="outlined-adornment-password"
-                      type={values.showPassword ? "text" : "password"}
-                      value={values.password}
-                      onChange={handleChange("password")}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                            style={{ color: "white" }}
-                          >
-                            {values.showPassword ? (
-                              <VisibilityOff />
-                            ) : (
-                              <Visibility />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      label="Password"
-                    /> */}
                     <TextValidator
                       sx={{
                         backgroundColor: "#33303e",
@@ -240,37 +162,6 @@ const RegisterForm = () => {
                     />
                   </FormControl>
                   <FormControl sx={{ m: 1, width: "45ch" }} variant="outlined">
-                    {/* <InputLabel
-                      sx={{ color: "white" }}
-                      htmlFor="outlined-adornment-confirmpassw"
-                    >
-                      Confirm Password
-                    </InputLabel> */}
-                    {/* <StyledOutlinedInput
-                      sx={{ color: "white" }}
-                      id="outlined-adornment-confirmpassw2"
-                      type={values.showPassword ? "text" : "password"}
-                      value={values.confirmpassw}
-                      onChange={handleChange("confirmpassw")}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                            style={{ color: "white" }}
-                          >
-                            {values.showPassword ? (
-                              <VisibilityOff />
-                            ) : (
-                              <Visibility />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                      label="Confirm password"
-                    /> */}
                     <TextValidator
                       sx={{
                         backgroundColor: "#33303e",
