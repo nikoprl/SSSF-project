@@ -63,7 +63,7 @@ const RegisterForm = () => {
   });
 
   const handleClickShowPassword = () => {
-    handleInputChangeByName(values,"showPassword", !values.showPassword);
+    handleInputChangeByName("showPassword", !values.showPassword);
   };
 
   const handleMouseDownPassword = (event) => {
