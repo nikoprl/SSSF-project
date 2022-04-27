@@ -11,7 +11,8 @@ export default gql`
       title: String!
       description: String!
       ingredients: [String]!
-      time: String!
+      hour: String!
+      minutes: String!      
       author: String!
     ): Recipe
   }
@@ -21,7 +22,8 @@ export default gql`
     title: String
     description: String
     ingredients: [String]
-    time: String
+    hour: String
+    minutes: String    
     author: String
   }
 `;
