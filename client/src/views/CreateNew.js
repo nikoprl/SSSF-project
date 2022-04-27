@@ -1,7 +1,9 @@
+import RecipeForm from "../components/RecipeForm"
+
 const CreateNew = () => {
     return (
       <>
-        <p>CreateNew</p>
+      <RecipeForm></RecipeForm>
       </>
     );
   };

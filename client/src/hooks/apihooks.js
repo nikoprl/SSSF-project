@@ -60,14 +60,15 @@ const getRecipes = async () => {
           title
           description
           ingredients
-          time
+          hour
+          minutes
           author
         }
       }
       `,
   };
   const data = await fetchGraphql(query);
-  console.log("recipes:",data.recipes)
+  console.log("recipes:", data.recipes);
   return data;
 };
 
@@ -88,8 +89,37 @@ const getRecipeById = async (recipeId) => {
     variables: { recipeId },
   };
   const data = await fetchGraphql(query);
-  console.log("recipes:",data.recipe)
+  console.log("recipes:", data.recipe);
   return data.recipe;
-}
+};
+
+const createRecipe = async (recipevariables) => {
+  console.log("create recipe", recipevariables);
+  const query = {
+    query: `
+    mutation AddRecipe($title: String!, $description: String!, $ingredients: [String]!, $hour: String!, $minutes: String!, $author: String!) {
+      addRecipe(title: $title, description: $description, ingredients: $ingredients, hour: $hour, minutes: $minutes, author: $author) {
+        id
+        title
+        description
+        ingredients
+        hour
+        minutes
+        author
+      }
+    }`,
+    variables: {
+      title: recipevariables.title,
+      description: recipevariables.description,
+      ingredients: recipevariables.ingredients,
+      hour: recipevariables.hour,
+      minutes: recipevariables.minutes,
+      author: "test",
+    },
+  };
+  const data = await fetchGraphql(query);
+  return data;
+};
+
 /*default */
-export {  registerUser, getUser, getRecipes,getRecipeById };
+export { registerUser, getUser, getRecipes, getRecipeById, createRecipe };
